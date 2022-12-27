@@ -4,7 +4,14 @@
 <%= link_to "Редактировать", edit_post_path(@post), :class => 'btn btn-warning' %>
 <%= button_to "Удалить пост :(", post_path(@post), method: :delete, :class => 'btn btn-danger' %>
 <hr>
-<h2>Комментарии </h2>
+  <h2>Все комментарии</h2>
+<% @post.comments.each do |comment|%>
+  <div class="alert alert-light">
+   <p><strong><%= comment.username %></strong>: <%=comment.body%></p>
+  </div>
+<% end %>
+<hr>
+<h2>Добавление комментария</h2>
 <%= form_for([@post,@post.comments.build]) do |f|%>
 
   <p>
