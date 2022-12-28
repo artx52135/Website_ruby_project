@@ -1,8 +1,10 @@
 <h1><%=@post.title%></h1>
 <p><%=@post.body%></p>
 <hr>
+<% if user_signed_in? %>
 <%= link_to "Редактировать", edit_post_path(@post), :class => 'btn btn-warning' %>
 <%= button_to "Удалить пост :(", post_path(@post), method: :delete, :class => 'btn btn-danger' %>
+  <% end %>
 <hr>
   <h2>Все комментарии</h2>
 <% @post.comments.each do |comment|%>
