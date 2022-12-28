@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show] 
-  #http_basic_authenticate_with name: "admin", password: "12345", 
-    #except: [:index, :show]
+  #http_basic_authenticate_with name: "admin", password: "ruby", except: [:index, :show]
   def index 
     @post = Post.all
   end
@@ -42,6 +41,6 @@ class PostsController < ApplicationController
     end
   end
   private def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :image)
   end
 end

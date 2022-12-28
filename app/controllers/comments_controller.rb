@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show] 
-  #http_basic_authenticate_with name: "admin", password: "12345"
-  
+  before_action :authenticate_user!, except: [:index, :show]
+  #http_basic_authenticate_with name: "admin", password: "ruby", 
+    #except: [:index, :show]
+
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
